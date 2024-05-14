@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>Post</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -903,7 +903,7 @@
 </head>
 
 <body>
-    <h1>Home page</h1>
+    <h1>Post page</h1>
     <x-navigation />
 </body>
 
