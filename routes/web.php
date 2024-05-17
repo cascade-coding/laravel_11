@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CreateAccountController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [CreateAccountController::class, 'show']);
+Route::post('/', [CreateAccountController::class, 'create_account']);
