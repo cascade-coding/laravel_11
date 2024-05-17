@@ -14,14 +14,9 @@ class CreateAccountController extends Controller
     public function create_account(Request $request)
     {
         // ! add validation rules
-        // $validated = $request->validate([
-        //     'name' => 'required',
-        //     'email' => ['required', 'email'],
-        // ]);
-
         $validated = $request->validate([
             'name' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|min:10',
         ]);
 
 
