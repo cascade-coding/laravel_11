@@ -172,10 +172,7 @@ return [
     */
 
     'custom' => [
-        'email' => [
-            'required' => 'Email is required',
-            'email' => 'Invalid email',
-        ],
+        
     ],
 
     /*

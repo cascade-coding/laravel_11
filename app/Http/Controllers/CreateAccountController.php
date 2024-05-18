@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Rules\Uppercase;
 
 class CreateAccountController extends Controller
 {
@@ -15,8 +16,14 @@ class CreateAccountController extends Controller
     {
         // ! add validation rules
         $validated = $request->validate([
-            'name' => 'required',
+            // 'name' => ['required', new Uppercase], // ! using object rule
+            'name' => ['required', function ($attribute, $value, $fail) {
+                if ($value === 'jhon') {
+                    $fail("The {$attribute} is taken");
+                }
+            }], // ! using closure
             'email' => 'required|email|min:10',
+            'password' => 'required',
         ]);
 
 

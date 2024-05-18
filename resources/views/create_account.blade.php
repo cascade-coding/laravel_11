@@ -19,37 +19,15 @@
         <form action="" method="post">
             @csrf
             Name: <input type="text" name="name" id="name" value="{{ old('name') }}"> <br>
-            {{-- ! better way --}}
-            @error('name')
-                {{ $message }}
-                <br>
-            @enderror
-
-            {{-- @if ($errors->has('name'))
-                {{ $errors->first('name') }}
-                <br>
-            @endif --}}
+      
             Email: <input type="text" name="email" id="email" value="{{ old('email') }}"> <br>
-
-            {{-- ! better way --}}
-            @error('email')
-                {{ $message }}
-                <br>
-            @enderror
-
-            {{-- @if ($errors->any())
-                @foreach ($errors->get('email') as $message)
-                    <p>{{ $message }}</p>
-                @endforeach
-                <hr>
-            @endif --}}
+           
             Password: <input type="text" name="password" id="password" value="{{ old('password') }}"> <br>
             <br>
 
 
             @if ($errors->any())
                 <hr>
-                {{ $errors }}
                 @foreach ($errors->all() as $msg)
                     <p>{{ $msg }}</p>
                 @endforeach
