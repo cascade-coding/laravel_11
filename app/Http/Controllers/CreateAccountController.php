@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Rules\Uppercase;
+use App\Http\Requests\CreateAccountRequest;
 
 class CreateAccountController extends Controller
 {
@@ -12,22 +13,17 @@ class CreateAccountController extends Controller
         return view('create_account');
     }
 
-    public function create_account(Request $request)
+    public function create_account(CreateAccountRequest $request)
     {
-        // ! add validation rules
-        $validated = $request->validate([
-            // 'name' => ['required', new Uppercase], // ! using object rule
-            'name' => ['required', function ($attribute, $value, $fail) {
-                if ($value === 'jhon') {
-                    $fail("The {$attribute} is taken");
-                }
-            }], // ! using closure
-            'email' => 'required|email|min:10',
-            'password' => 'required',
-        ]);
-
+        // ! get the validated input data
+        $validated = $request->validated();
 
         dd($validated);
+
+        // ! Retrieve a portion of the validated input data...
+        // $validated = $request->safe()->only(['name', 'email']);
+        // $validated = $request->safe()->except(['name', 'email']);
+
 
         $request->flashExcept('password');
         return view('create_account');
