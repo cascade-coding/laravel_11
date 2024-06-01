@@ -1,0 +1,2 @@
+-- ! how to login to mysql server
+-- * mysql -u username -p

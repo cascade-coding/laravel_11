@@ -1,0 +1,93 @@
+-- ! Data Types
+-- ! https://www.w3schools.com/mysql/mysql_datatypes.asp
+-- ! https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+-- ! Examples
+-- * CHAR vs VARCHAR
+-- * INTEGER, INT, SMALLINT, TINYINT, MEDIUMINT, BIGINT
+-- * DECIMAL
+-- * FLOAT, DOUBLE
+-- ! Use BIGINT if precision and accuracy is critical
+-- * DATE, TIME, DATETIME, TIMESTAMP, and YEAR.
+-- * DATE -> 'YYYY-MM-DD' 
+-- * TIME -> 'HH:MM:SS' 
+-- * DATETIME -> 'YYYY-MM-DD HH:MM:SS' 
+-- ! ************************ *************************** --
+-- ! DATE and TIME functions
+-- * CURDATE()
+-- * CURTIME()
+-- * NOW()
+-- ! used with DATE, DATETIME, TIMESTAMP 
+-- * DAY("2024-05-29")
+-- * YEAR("2024-05-29")
+-- * DAYOFWEEK("2024-05-29")
+-- ! DAYOFYEAR("2024-05-29")
+-- * MONTHNAME("2024-05-29")
+-- ! WEEK("2024-05-29")
+-- ! used with TIME, DATETIME, TIMESTAMP 
+-- * HOUR("12:30:10") / HOUR("2024-05-29 12:30:10") 
+-- * MINUTE("12:30:10") / MINUTE("2024-05-29 12:30:10")
+-- * SECOND("12:30:10") / SECOND("2024-05-29 12:30:10")
+-- ! used with DATE, TIME, DATETIME, TIMESTAMP 
+-- * DATE("2024-05-29 12:30:10")
+-- * TIME("2024-05-29 12:30:10")
+-- ! used to formate date and time
+-- https://www.w3schools.com/sql/func_mysql_date_format.asp
+-- https://www.w3schools.com/sql/func_mysql_time_format.asp
+-- * DATE_TIME(date, format)
+-- * DATE_TIME("2024-05-29", "%M %D %Y"); 
+-- ! May 29th 2024    
+-- * DATE_TIME("2024-05-29 12:11:02", "%h:%i %p"); 
+-- * TIME_FORMAT(time, format);
+-- * TIME_FORMAT("19:30:10", "%H %i %s");
+-- ! ************************ *************************** --
+-- * DATEDIFF("2024-05-29", "2024-09-01");
+-- * DATEDIFF(CURDATE(), "2024-07-01"); 
+-- * TIMEDIFF("12:11:02", "01:09:01");
+-- ! Syntax
+-- * DATE_ADD(date, INTERVAL value addunit)
+-- * DATE_SUB(date, INTERVAL value subunit)
+-- * ADDTIME(time, INTERVAL value subunit)
+-- * SUBTIME(time, INTERVAL value subunit)
+-- ! addunit / subunit
+-- MICROSECOND
+-- SECOND
+-- MINUTE
+-- HOUR
+-- DAY
+-- WEEK
+-- MONTH
+-- QUARTER
+-- YEAR
+-- SECOND_MICROSECOND
+-- MINUTE_MICROSECOND
+-- MINUTE_SECOND
+-- HOUR_MICROSECOND
+-- HOUR_SECOND
+-- HOUR_MINUTE
+-- DAY_MICROSECOND
+-- DAY_SECOND
+-- DAY_MINUTE
+-- DAY_HOUR
+-- YEAR_MONTH
+-- * DATE_ADD("2024-05-30", INTERVAL 10 DAY)
+-- * DATE_ADD(CURDATE(), INTERVAL 10 YEAR)
+-- ! Temporal Intervals
+-- https://dev.mysql.com/doc/refman/8.4/en/expressions.html#temporal-intervals
+-- ! Syntax
+-- * INTERVAL expr unit
+-- date + INTERVAL expr unit
+-- date - INTERVAL expr unit
+-- * SELECT NOW() - INTERVAL 22 YEAR;
+-- * SELECT NOW() + INTERVAL 22 YEAR;
+-- * SELECT YEAR(NOW() + INTERVAL 22 YEAR);
+-- ! ************************ *************************** --
+
+-- ! TIMESTAMP
+-- CREATE TABLE people (name VARCHAR(200), created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
+
+-- CREATE TABLE people (
+--     name VARCHAR(200),
+--     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+--     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+-- );
+
