@@ -1,11 +1,15 @@
 <?php
 
+use App\Http\Controllers\DisplayController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/display', [DisplayController::class, 'display'])->middleware('auth');
+Route::get('/check', [DisplayController::class, 'check_auth']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
