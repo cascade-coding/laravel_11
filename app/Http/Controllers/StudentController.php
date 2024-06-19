@@ -10,9 +10,11 @@ class StudentController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Student::all();
+        return response([
+            'data' => Student::all()
+        ]);
     }
 
     /**
