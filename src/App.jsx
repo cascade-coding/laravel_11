@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
+import axios from "axios";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [messageText, setMessageText] = useState("");
 
   useEffect(() => {
     window.Echo.join(`online`)
@@ -22,28 +21,53 @@ function App() {
       });
   }, []);
 
+  const handleMessageBroadCast = async (e) => {
+    e.preventDefault();
+
+    if (messageText.trim() === "") return;
+
+    try {
+      await axios.post(
+        `http://127.0.0.1:8000/api/message`,
+        {
+          text: messageText,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+
+      setMessageText("");
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
+  useEffect(() => {
+    window.Echo.private("channel_for_everyone").listen(
+      "GotMessage",
+      async (e) => {
+        // e.message
+        console.log({ e });
+      }
+    );
+
+    return () => {
+      window.Echo.leave("channel_for_everyone");
+    };
+  }, []);
+
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <form onSubmit={handleMessageBroadCast}>
+        <input
+          type="text"
+          value={messageText}
+          onChange={(e) => setMessageText(e.target.value)}
+        />
+      </form>
     </>
   );
 }
