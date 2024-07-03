@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -25,4 +26,10 @@ Route::prefix('user')->group(function () {
 
         Route::post('/change_password', [UserController::class, 'change_password'])->name('change_password');
     });
+});
+
+
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::post('/message', [ChatController::class, 'message'])
+        ->name('message');
 });
