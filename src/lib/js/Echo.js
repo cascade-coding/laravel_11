@@ -24,7 +24,7 @@ window.Echo = new Echo({
             },
             {
               headers: {
-                Authorization: `Bearer 12|WLvhk0hIMAEqqlBr1BxGCMkce1tBaah8JHBuEVIp6dd1d33c`,
+                Authorization: `Bearer 1|f6gjyUJubWnTYUEkJYTq3JHJLiaYbqRFCaBLzoJpfffe3de9`,
               },
             }
           )
