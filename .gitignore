@@ -1,0 +1,46 @@
+# Laravel specific
+/vendor
+/lvd1/vendor
+/node_modules
+/.idea
+/.phpunit.result.cache
+/.vscode
+/.env
+/public/storage
+/storage/*.key
+/storage/debugbar
+/storage/framework/cache/data
+/storage/framework/sessions
+/storage/framework/views
+/storage/logs
+/.docker
+.docker-compose.override.yml
+docker-compose.override.yml
+
+# Docker specific
+docker-compose.override.yml
+
+# System files
+.DS_Store
+Thumbs.db
+
+# OS generated files
+ehthumbs.db
+Icon?
+Desktop.ini
+
+# IDEs and editors
+*.sublime-project
+*.sublime-workspace
+*.iml
+*.swp
+*.swo
+*.log
+
+# Composer files
+/composer.lock
+/composer.phar
+
+# Node.js files
+npm-debug.log
+yarn-error.log
