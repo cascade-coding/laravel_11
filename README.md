@@ -20,7 +20,7 @@ This project uses Docker to containerize a Laravel application with PHP, MySQL, 
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/your-repo/your-project.git
+   git clone https://github.com/code-meta/laravel_11.git
    cd your-project
    ```
 
